@@ -1,2 +1,4 @@
 *bin
-# No binaries
+.gnupg
+.ssh
+
