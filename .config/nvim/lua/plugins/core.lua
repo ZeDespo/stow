@@ -8,15 +8,21 @@ return {
     opts = {
       ensure_installed = {
         "bash",
+        "dockerfile",
+        "go",
         "html",
         "javascript",
         "json",
         "lua",
         "markdown",
         "markdown_inline",
+        "proto",
         "python",
         "query",
         "regex",
+        "rust",
+        "sql",
+        "toml",
         "tsx",
         "typescript",
         "vim",
@@ -31,16 +37,23 @@ return {
     "mason-org/mason.nvim", -- LSP server orchestrator
     opts = {
       ensure_installed = {
+        "buf", -- Protocol buffer lsp / linter / formatter
         "debugpy", -- Python debugger
-        "stylua",
+        "gofumpt",
+        "goimports",
+        "golangci-lint", -- Golang linter
+        "gopls", -- Golang LSP
+        "hadolint", -- Dockerfile linter
         "lua-language-server",
-        "pyright", -- Python LSP
         "pyproject-fmt", -- For pyproject.tmol
+        "pyright", -- Python LSP
         "ruff", -- Python formatter
         "rust-analyzer", -- Rust
+        "shfmt", -- Shell formatter
+        "stylua",
+        "tombi", --toml lsp
         "yaml-language-server", -- All hail yaml LSP
         "yamlfix", -- Yaml formatter
-        "tombi", --toml lsp
       },
     },
   },
@@ -83,14 +96,22 @@ return {
     },
   },
   {
+    "nvim-treesitter/nvim-treesitter",
+    optional = true,
+    opts = {
+      ensure_installed = {},
+    },
+  },
+  {
     "stevearc/conform.nvim",
     opts = function(_, opts)
       opts.formatters_by_ft = {
+        go = { "goimports", "gofumpt" },
         lua = { "stylua" },
+        python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+        toml = { "pyproject-toml" },
         yaml = { "yamlfix" },
         yml = { "yamlfix" },
-        toml = { "pyproject-toml" },
-        python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
       }
       opts.formatters = {
         yamlfix = {

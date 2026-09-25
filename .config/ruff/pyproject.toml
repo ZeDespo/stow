@@ -34,7 +34,7 @@ line-length = 88
 indent-width = 4
 
 # Check if code is complaint with oldest provided Python
-target-version = "py312"
+target-version = "py313"
 
 # No point in using this if we don't fix things magically
 fix = true
@@ -68,6 +68,7 @@ unfixable = []
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["D"]
+"__init__.py" = ["F401", "F403"]
 
 [tool.ruff.format]
 # Like Black, use double quotes for strings.
